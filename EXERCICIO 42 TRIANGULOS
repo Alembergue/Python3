@@ -1,0 +1,17 @@
+#42 TRIANGULOS
+lado1 = int(input('Comprimento 1 :'))
+lado2 = int(input('Comprimento 2 :'))
+lado3 = int(input('Comprimento 3 :'))
+tr1 = lado2 + lado3
+tr2 = lado1 + lado3
+tr3 = lado1 + lado2
+if tr1 > lado1 and tr2 > lado2 and tr3 > lado3 :
+  print('É possível formar um triângulo,',end ='')
+  if lado1 == lado2 == lado3 :
+    print('Com as medidas {},{} e {},o triangulo formado é EQUILÁTERO'.format(lado1,lado2,lado3))
+  elif lado1 == lado2 or lado1 == lado3 or lado2 == lado3 :
+     print('Com as medidas {},{} e {},o triangulo formado é ISÓCELES'.format(lado1,lado2,lado3))
+  else:
+     print('Com as medidas {},{} e {},o triangulo formado é ESCALENO'.format(lado1,lado2,lado3))
+else:
+ print('Não é possível formar um triangulo com estes valores')
