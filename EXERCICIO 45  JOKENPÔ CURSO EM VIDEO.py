@@ -36,3 +36,4 @@ elif jogador > 2 :
       print('\033[1;31mEsta opção não é valida! tente uma das opções mencionadas nas instruções!')
 else:
      print('JOGADOR = {}\nMAQUINA = {}\n\033[1;33mEMPATAMOS!!'.format(itens[jogador],itens[maquina]))
+    

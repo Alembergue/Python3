@@ -1,0 +1,17 @@
+# Calculador de descontos
+print('{:=^40}'.format('LOJAS ANICETO'))
+valor = float(input('Preço do produto:R$'))
+pagamento = str(input('FORMAS DE PAGAMENTO:(Dinheiro,Cheque,Cartão)\nQual a forma de pagamento ?')).upper().lower().strip()
+desconto10 = valor - (valor*10/100)
+desconto5 = valor - (valor*5/100)
+juros20 = valor + (valor*20/100)
+if pagamento == 'Cartão' or pagamento == 'cartao':
+    parcela = int(input('Em quantas vezes?'))
+    if parcela == 1 :
+      print('O produto fica com 5% de desconto,custara R${:.2f}'.format(desconto5))
+    elif parcela == 2 :
+      print('O produto custura R${:.2f}'.format(valor))
+    elif parcela >= 3 :
+      print('O produto ficara com juros de 20%,o valor final sera de R${:.2f}! '.format(juros20,parcela))
+if pagamento == 'dinheiro' or pagamento == 'cheque':
+    print('Você fica com 10% de desconto ,o produto custara R${:.2f} '.format(desconto10))
