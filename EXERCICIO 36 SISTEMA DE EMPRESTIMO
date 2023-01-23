@@ -1,0 +1,21 @@
+print('-=-'*10)
+print(' -=-'*2,'BANCO CENTRAL',' -=-'*2)
+print('-=-'*10)
+import time
+casa =     float(input('Qual o valor do imovel? R$'))
+salario =  float(input('Qual  a sua renda mensal? R$'))
+parcela =  int(input('Em quantos anos?'))
+print('Analisando...')
+time.sleep(3)
+#cores = {'vermelho':'\033[1;31m','verde':'\033[1;32m',
+ #        'fim':'\033[m'}
+pmensal = casa/(parcela*12)
+sal30 = (salario*30)/100
+
+if pmensal > sal30 :
+    print('Para pagar a casa de R${:.2f} em {} anos a prestação será de {} \033[1;31mEmpréstimo NEGADO!\033[m'.format(casa,parcela,pmensal))
+
+elif pmensal == sal30 or pmensal < sal30:
+    print('Para pagar a casa de R$ {:.2f} a prestação será de R${:.2f} mensais por {} anos.\033[1;32mEmpréstimo APROVADO!\033[m'.format(casa,pmensal,parcela))
+    print('Obrigado por escolher o nosso banco,volte sempre!')
+print('Tenha um bom dia!')
