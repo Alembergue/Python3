@@ -1,0 +1,22 @@
+print('{:=^40}'.format('Mundo 3 - Usando + listas'))
+lista = []
+listapar = []
+listaimpar = []
+while True :
+    valor = (int(input('Digite um valor :')))
+    lista.append(valor)
+    continuar = str(input('Deseja continuar?[S/N]')).upper().strip()
+    par = valor % 2
+    if par == 0 :
+        listapar.append(valor)
+    else:
+        listaimpar.append(valor)
+    while continuar != 'S' and continuar != 'N' :
+        print('\033[1;31Opção Invalida! tente novamente!\033m')
+        continuar = str(input('Deseja continuar?[S/N]')).upper().strip()
+    if continuar == 'N':
+        break
+print('-='*19)
+print(f'A lista completa é {lista}')
+print(f'A lista de numeros pares é {sorted(listapar)}')
+print(f'A lista de numeros impares é {sorted(listaimpar)}')
