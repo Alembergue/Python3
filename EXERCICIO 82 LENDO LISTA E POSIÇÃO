@@ -1,0 +1,24 @@
+print('{:=^40}'.format('Mundo 3 - Lendo lista e posição'))
+import time
+lista =[]
+while True :
+    lista.append(int(input('Digite um valor :')))
+    print('\033[1;33mAdicionando...\033[m')
+    time.sleep(2)
+    print('\033[1;32mValor adicionado com sucesso!\033[m')
+    continuar = str(input('Deseja continuar:[S/N]')).upper().strip()
+
+    while continuar != 'S' and continuar != 'N' :
+        print('\033[1;31Opção invalida! Tente novamente!\033m')
+        continuar = str(input('Deseja continuar:[S/N]')).upper().strip()
+    if 'N' in continuar :
+        break
+print('-='*19)
+print(f'Foram digitadoas {len(lista)} elementos.')
+print(f'Os valores em ordem decrescente são ' ,end='')
+print(sorted(lista,reverse=True)) # para ordem reversa
+if 5 in lista :
+    print(f'O valor 5 faz parte da lista na posição {lista.index(5)+1}')
+else:
+    print('\033[1;31O valor 5 não faz parte da lista\033[m')
+print('-='*19)
