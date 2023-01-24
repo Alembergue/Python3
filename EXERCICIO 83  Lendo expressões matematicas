@@ -1,0 +1,16 @@
+print('{:=^40}'.format('Mundo 3 - Lendo expressões matematicas'))
+expressao = str(input('Digite uma expressão:'))
+pilha = []
+for simb in expressao:
+    if simb == '(':
+        pilha.append('(')
+    elif simb ==')':
+        if len(pilha) > 0 :
+            pilha.pop() # remove ultimo iten da pilha
+        else:
+            pilha.append(')')
+            break
+if len(pilha) == 0 :
+    print('Sua expressão esta valida')
+else:
+    print('Sua expressão está errada!')
