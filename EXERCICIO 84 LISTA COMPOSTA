@@ -13,7 +13,7 @@ while True :
     lista.append(dado[:])
     dado.clear()
     while continuar != 'N' and continuar != 'S' :
-        print('\033[1;31mOpção invalida!Tente novamente\033[m')
+        print('\033[1;31mOpção invalida!Tente novamente!\033[m')
         continuar = str(input('Deseja continuar?[S/N]')).upper().strip()
     if continuar == 'N':
         break
