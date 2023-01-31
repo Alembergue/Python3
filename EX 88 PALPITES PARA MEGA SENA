@@ -1,0 +1,22 @@
+print('{:=^40}'.format('Mundo 3 - Gerador de palpites'))
+import random
+import time
+palpites =[]
+print('-'*30)
+print('      JOGA NA MEGA SENA    ')
+print('-'*30)
+valor = int(input('Quantos jogos você quer que eu sorteie?'))
+print(f'-=-=-= SORTEANDO {valor} JOGOS -=-=-=')
+for c in range(0,valor) :
+    time.sleep(2)
+    jogo = random.sample(range(1,60),6)
+    print(f'jOGO {c+1}:{sorted(jogo)}')
+    palpites.append(jogo)
+time.sleep(1)
+print('-'*30)
+print(f'     IMPRIMINDO BILHETES')
+print('-'*30)
+time.sleep(5)
+for i,p in enumerate (palpites):
+   print(f'Jogo {i+1}: {sorted(p)}')
+print('{:=^30}'.format('<BOA SORTE>'))
