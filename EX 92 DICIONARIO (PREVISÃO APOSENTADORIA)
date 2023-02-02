@@ -1,0 +1,28 @@
+print('{:=^40}'.format('Mundo 3 - Previsão de aposentadoria '))
+from datetime import date
+dados = {}
+dados['nome'] = str(input('Nome:')).upper().strip()
+idade = int(input('Ano de nascimento :'))
+dados['idade'] = date.today().year - idade
+if dados['idade'] >= 15 and dados['idade'] < 18 :
+    print('Liberado apenas para trabalhar como menor aprendiz!')
+elif dados['idade'] < 15 :
+    print('Menor de idade , não esta liberado para trabalhar!')
+if dados['idade'] >= 18 :
+  dados['ctps'] = int(input('Carteira de trabalaho[N°0 não tem]:'))
+  if  dados['ctps'] == 0 :
+    print('-='*40)
+    print(dados)
+    print(f'Nome = {dados["nome"]}\nIdade = {dados["idade"]}\nCTPS = {dados["ctps"]}')
+  else:
+    contratação = int(input('Ano de contratação:'))
+    dados['contratação'] = contratação
+    dados['salario'] = int(input('Salário:'))
+    aposentadoria = dados['idade'] + (date.today().year - contratação)
+    dados['aposentadoria'] = aposentadoria
+    print('-='*40)
+    print(dados)
+    for c ,v in dados.items():
+       print(f' - {c} : {v}')
+print()
+print('   -=PROGRAMA ENCERRADO=-')
