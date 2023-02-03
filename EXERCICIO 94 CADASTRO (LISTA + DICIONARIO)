@@ -1,0 +1,39 @@
+print('{:=^40}'.format('Mundo 3 - Cadastros (lista.dicionario) '))
+cadastro = {}
+dados = []
+dadosf = []
+soma = cont = 0
+while True :
+    nome = str(input('Nome:')).upper().strip()
+    cadastro['nome'] = nome
+    sexo = str(input('Sexo:[M/F]')).upper()[0].strip()
+    cadastro['sexo'] = sexo
+    idade = int(input('Idade :'))
+    cadastro['idade'] = idade
+    if sexo == 'F':
+        dadosf.append(nome)
+    soma = soma + cadastro['idade']
+    dados.append(cadastro.copy())
+    continuar = str(input('Deseja continuar?[S/N]')).upper().strip()
+    cont = cont + 1
+    while continuar != 'S' and continuar != 'N':
+        print(f'Opção invalida! Tente novamente!')
+        continuar = str(input('Deseja continuar?[S/N]')).upper().strip()
+    if continuar == 'N' :
+        break
+print('-='*40)
+print(f' - O grupo tem {len(cadastro)} pessoas cadastradas.')
+print(' - A média de idade é de {:.2f} anos.'.format(soma/cont))
+print(f' - A lista das mulheres cadastradas é :' , end='')
+for c , n in enumerate(dadosf):
+        print(f'{n},',end=' ') #imprimir sem parenteses
+print()
+print(f' - Lista de pessoas com idade acima da média:')
+for v in dados:
+    if v['idade'] >= (soma/cont):
+        print('    ',end='')
+        for t , d in v.items():
+            print(f'{t} = {d};',end= ' ',)
+        print()
+print('\n')
+print('   -=PROGRAMA ENCERRADO=-')
