@@ -1,0 +1,43 @@
+print('{:=^40}'.format('Mundo 3 - Desempenho jogador '))
+jogador = {}
+registro = []
+gols = []
+while True :
+    print('-'*42)
+    gols.clear()  # limpar os dados ao reiniciar o ciclo para cadastrar novo jogador e não somar os dados
+    jogador.clear() # limpar os dados ao reiniciar o ciclo para cadastrar novo jogador e não somar os dados
+    jogador['nome'] = str(input('Nome do jogador:'))
+    partidas = int(input(f'Quantas partidas {jogador["nome"]} jogou ?'))
+    for c in range(0,partidas) :
+        gol = int(input(f'Quantos gols na partida {c+1}?'))
+        gols.append(gol)
+    jogador['gol'] = gols[:]
+    jogador['total'] = sum(gols)
+    registro.append(jogador.copy())
+    continuar = str(input('Deseja continuar?[S/N]')).strip()[0].upper()
+    while continuar != 'S' and continuar != 'N':
+        print(f'Opção invalida! Tente novamente!')
+        continuar = str(input('Deseja continuar?[S/N]')).upper().strip()[0]
+    if continuar == 'N' :
+        break
+print('-='*42)
+print('Cod nome        gols      total')
+print('-'*42)
+for c,v in enumerate(registro):
+  print('{:<4}'.format(c+1), end='')
+  for k ,valor in registro[c].items():
+     print('{:<12}'.format(str(valor)), end='')
+  print()
+print('-'*42)
+while True :
+    pesquisa = int(input('Mostrar dados de qual jogador?[999 - cancelar]'))
+    if pesquisa == 999 :
+        break
+    if pesquisa - 1 >= len(registro) :
+       print('\033[1;31mJogador inexistente\033[m!Tente novamente')
+    elif pesquisa - 1 < 0 :
+        print('\033[1;31mJogador inexistente\033[m!Tente novamente')
+    else:
+        print(f'-- \033[1;34mDADOS DO JOGADOR\033[m => {registro[pesquisa -1]["nome"].upper()}')
+        for c ,g in enumerate(registro[pesquisa - 1 ]['gol']):
+            print(f'-- Na partida {c+1}, fez {g} gols.')
