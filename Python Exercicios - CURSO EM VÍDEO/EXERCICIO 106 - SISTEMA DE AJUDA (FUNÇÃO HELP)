@@ -1,0 +1,26 @@
+print('{:=^40}'.format('Mundo 3 - FUNÇÃO -  SISTEMA DE AJUDA PYTHON '))
+while True :
+ import time
+ time.sleep(1)
+ def titulo(txt):
+    print('\033[1;42m~' * len(txt)) # PARA ACOMPAANHAR O TAMANDO DO TEXTO
+    print(txt)
+    print('~'* len(txt))
+ titulo('SISTEMA DE AJUDA pyHELP')
+ opcao = str(input('\033[mFunção ou Biblioteca >')).strip().lower()
+ if opcao == 'fim':
+     def fim(txt):
+       print('\033[1;41m~' * len(txt)) # PARA ACOMPAANHAR O TAMANDO DO TEXTO
+       print(txt)
+       print('~'* len(txt))
+       print('\033[m')
+     fim('Programa encerrado!Até logo!')
+     break
+ def acesso(txt):
+    print('\033[1;44m~' * len(txt)) # PARA ACOMPAANHAR O TAMANDO DO TEXTO
+    print(txt)
+    print('~'* len(txt))
+ acesso(f'Acessando o manual do commando {opcao}')
+ print('\033[mCarregando...')
+ time.sleep(3)
+ help(f'{opcao}')
