@@ -1,0 +1,2 @@
+[console_scripts]
+pdfmerge = pdfmerge.__main__:main
