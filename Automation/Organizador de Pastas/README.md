@@ -7,7 +7,7 @@ pip install pywin32
 
 pip install openpyxl
 
-# Criar o arquivo .exe a aprtir do ambiente virtual para que fique mais compacto
+# Criar o arquivo .exe a partir do ambiente virtual para que fique mais compacto
 
 pyintaller --onefile nomedoarquivo.py
 
