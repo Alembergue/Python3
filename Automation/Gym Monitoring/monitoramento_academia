@@ -1,0 +1,72 @@
+import pandas as pd
+from datetime import datetime
+import os
+
+# Variáveis globais
+DATA_PATH = "gym_access_log.csv"
+CHECKOUT_PATH = "gym_checkout_log.csv"
+
+# Função para carregar o log de acessos
+def load_data():
+    if os.path.exists(DATA_PATH):
+        return pd.read_csv(DATA_PATH, parse_dates=['timestamp'], dtype={'cpf': str})
+    else:
+        return pd.DataFrame(columns=['timestamp', 'cpf'])
+
+# Função para carregar o log de check-outs
+def load_checkout_data():
+    if os.path.exists(CHECKOUT_PATH):
+        return pd.read_csv(CHECKOUT_PATH, parse_dates=['timestamp'], dtype={'cpf': str})
+    else:
+        return pd.DataFrame(columns=['timestamp', 'cpf'])
+
+# Função para salvar os logs de acesso
+def save_data(df, path):
+    df.to_csv(path, index=False)
+
+# Função para registrar entrada
+def register_access(cpf):
+    df = load_data()
+    new_entry = pd.DataFrame({'timestamp': [datetime.now()], 'cpf': [cpf]})
+    df = pd.concat([df, new_entry], ignore_index=True)
+    save_data(df, DATA_PATH)
+    print("✅ Entrada registrada com sucesso!\n")
+
+# Função para registrar saída
+def register_checkout(cpf):
+    df_access = load_data()
+    df_checkout = load_checkout_data()
+
+    # Converte CPFs para strings (evita erros de comparação)
+    df_access['cpf'] = df_access['cpf'].astype(str)
+    df_checkout['cpf'] = df_checkout['cpf'].astype(str)
+
+    # Verifica se o CPF tem um check-in ativo (sem check-out correspondente)
+    if not df_access.empty and cpf in df_access['cpf'].tolist() and cpf not in df_checkout['cpf'].tolist():
+        new_entry = pd.DataFrame({'timestamp': [datetime.now()], 'cpf': [cpf]})
+        df_checkout = pd.concat([df_checkout, new_entry], ignore_index=True)
+        save_data(df_checkout, CHECKOUT_PATH)
+        print("✅ Check-out registrado com sucesso!\n")
+    else:
+        print("❌ Erro: Nenhum check-in ativo encontrado para esse CPF.\n")
+
+# Loop infinito para manter o sistema rodando automaticamente
+while True:
+    # Loop para garantir que o usuário escolha 1 ou 2
+    while True:
+        option = input("🔹 Digite 1 para registrar entrada\n🔹 Digite 2 para registrar saída\n🔹 Opção: ")
+        if option in ["1", "2"]:
+            break
+        print("❌ Erro: Escolha inválida. Digite '1' para entrada ou '2' para saída.\n")
+
+    # Loop para garantir que o CPF tenha exatamente 6 dígitos numéricos
+    while True:
+        cpf = input("🔹 Digite os 6 primeiros dígitos do CPF: ")
+        if len(cpf) == 6 and cpf.isdigit():
+            break
+        print("❌ Erro: O CPF deve ter exatamente 6 números.\n")
+
+    if option == "1":
+        register_access(cpf)
+    elif option == "2":
+        register_checkout(cpf)
