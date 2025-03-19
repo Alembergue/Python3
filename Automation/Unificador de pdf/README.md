@@ -4,7 +4,7 @@ Em caso de error na instalação do PyPDF2 "error [Windows 5]", atualize o coman
 
 Tente instalar novamente o PyPDF2
 
-Os arquivos PDF precisam estar dentro da pasta ARQUIVOS , os mesmos prewcisam estar numerados na ordem que deseja unilos 
+Os arquivos PDF precisam estar dentro da pasta ARQUIVOS , os mesmos precisam estar numerados na ordem que deseja unilos 
 EX: 01. conta / 02.Boleto e etc
 
 
